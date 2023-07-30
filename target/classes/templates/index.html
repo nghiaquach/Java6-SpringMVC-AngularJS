@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landing Page</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <style>
+    aside {
+    width: 30%;
+    padding-left: 15px;
+    margin-left: 15px;
+    float: right;
+    font-style: italic;
+}
+    </style>
+
+</head>
+<body ng-app="myApp" ng-controller="landingController">
+
+  <!-- Include your header and menu here -->
+
+  
+
+  <div class="container">
+
+    <button class="btn btn-danger" ng-click="logout()">Logout</button>
+    <br/>
+    <h3>Hello {{account.fullname}},</h3>
+    <h2>Welcome to our Tour Agency!</h2>
+
+    <aside>
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">Cart</div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="item in cart">{{ item.name }} - Price: {{ item.price }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </aside>
+
+    <div class="row" style="width: 70%;">
+      <div class="col-md-4" ng-repeat="tour in tours">
+        <div class="thumbnail">
+          <img ng-src="{{ tour.imageUrl }}" alt="{{ tour.name }}">
+          <div class="caption">
+            <h4>{{ tour.name }}</h4>
+            <p>Price: {{ tour.price }}</p>
+            <p>Available: {{ tour.available ? 'Yes' : 'No' }}</p>
+            <p>
+              <button class="btn btn-primary" ng-click="addToCart(tour)">Add to Cart</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Include your footer here -->
+
+  <!-- Include AngularJS and your app.js script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>
